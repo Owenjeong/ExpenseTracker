@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
 import 'package:expense_tracker/widgets/expenses.dart';
+import 'package:flutter/services.dart'; //for locking orientation
 
 void main() {
+  // lockin portrait mode
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
+  ).then((fn) {
   runApp(const ExpenseTracker());
+});
 }
 
 var kColorScheme = ColorScheme.fromSeed(
